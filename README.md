@@ -1,4 +1,4 @@
-chaid
+chaId
 ==============
 
 Id equality assertions for chai.
@@ -6,7 +6,8 @@ Id equality assertions for chai.
 [![NPM version](http://img.shields.io/npm/v/chaid.svg?style=flat-square)](https://www.npmjs.org/package/chaid)
 [![Build Status](http://img.shields.io/travis/hurrymaplelad/chaid/master.svg?style=flat-square)](https://travis-ci.org/hurrymaplelad/chaid)
 
-Chaid converts many different id representations to strings for comparison:
+Ids come in [lots of flavors](http://bites.goodeggs.com/posts/ids-in-mongoose-json-and-backbone/).  Sometimes they're strings, sometimes objects.  Sometimes you'll find them at `.id`, other times at `._id`.  ChaId lets you test for equality by comparing string representations of ids, with minimal fretting about initial representation or location:
+
 ```js
 {_id: 'foo'}.should.have.id('foo')
 {id: 'foo', bar: 2}.should.have.same.id({id: 'foo', baz: 3})
