@@ -13,6 +13,7 @@ function normalize (target) {
 }
 
 module.exports = function (chai, utils) {
+
   chai.Assertion.addMethod('id', function (target) {
     var expected = normalize(target),
         actual = normalize(this._obj)
@@ -24,5 +25,24 @@ module.exports = function (chai, utils) {
       expected,
       actual
     )
+  })
+
+  chai.Assertion.addProperty('unordered', function() {
+    utils.flag(this, 'unordered', true)
+  })
+
+  chai.Assertion.addMethod('ids', function (target) {
+    var expected = target.map(normalize),
+        actual = this._obj.map(normalize),
+        assertion = new chai.Assertion(actual)
+    utils.transferFlags(this, assertion, false)
+
+    if (utils.flag(this, 'contains')) {
+      assertion.to.include.members(expected)
+    } else if (utils.flag(this, 'unordered')) {
+      assertion.to.have.members(expected)
+    } else {
+      assertion.to.eql(expected)
+    }
   })
 }
