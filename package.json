@@ -1,0 +1,37 @@
+{
+  "name": "chaid",
+  "version": "0.0.0",
+  "description": "Id equality assertions for chai",
+  "author": "Adam Hull <adam@hmlad.com>",
+  "keywords": [
+    "chai",
+    "plugin",
+    "id",
+    "equality",
+    "assertion",
+    "mongo",
+    "mongodb",
+    "objectid"
+  ],
+  "main": "chaid",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hurrymaplelad/chaid.git"
+  },
+  "homepage": "https://github.com/hurrymaplelad/chaid",
+  "bugs": "https://github.com/hurrymaplelad/chaid/issues",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "coffee-script": ">=1.7.x",
+    "jshint": "*",
+    "mocha": "~1.x.x"
+  },
+  "jshintConfig": {
+    "asi": true
+  },
+  "scripts": {
+    "test": "jshint *.js && mocha"
+  }
+}
