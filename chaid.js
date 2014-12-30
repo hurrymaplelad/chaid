@@ -3,12 +3,12 @@ function normalize (target) {
     throw new Error('chaid will not compare null or undefined ids')
   if (typeof target === 'string')
     return target
+  if (typeof target.toHexString === 'function')
+    return target.toHexString()
   if (typeof target.id != 'undefined')
     return target.id.toString()
   if (typeof target._id != 'undefined')
     return target._id.toString()
-  if (typeof target.toHexString === 'function')
-    return target.toHexString()
   throw new Error('chaid could not get an id from ' + target)
 }
 

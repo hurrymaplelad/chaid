@@ -1,5 +1,6 @@
 chai = require 'chai'
 chaid = require '..'
+ObjectId = require 'bson-objectid'
 
 chai.should()
 chai.use chaid
@@ -17,7 +18,7 @@ describe 'chaid', ->
       {id: 'foo'}.should.have.id 'foo'
 
     it 'accepts ObjectIds passed in directly', ->
-      {id: 'foo'}.should.have.id {toHexString: -> 'foo'}
+      {id: 'bbbbbbbbbbbbbbbbbbbbbbbb'}.should.have.id new ObjectId 'bbbbbbbbbbbbbbbbbbbbbbbb'
 
     it 'stringifies object representations of ids', ->
       {id: {toString: -> 'foo'}}.should.have.same.id {_id: 'foo'}
