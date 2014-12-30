@@ -10,6 +10,7 @@ Ids come in [lots of flavors](http://bites.goodeggs.com/posts/ids-in-mongoose-js
 
 ```js
 {_id: 'foo'}.should.have.id('foo')
+'foo'.should.id({id: 'foo'})
 {id: 'foo', bar: 2}.should.have.same.id({id: 'foo', baz: 3})
 {_id: 'foo'}.should.not.have.same.id({_id: 'bar'})
 {_id: 'foo'}.should.have.same.id({id: {toString: function() { return 'foo'}})
@@ -18,6 +19,7 @@ Ids come in [lots of flavors](http://bites.goodeggs.com/posts/ids-in-mongoose-js
 You can also compare lists of objects by id:
 ```js
 [{id:'a'}, {id:'b'}].should.have.ids ['a', 'b']
+['a', 'b'].should.be.ids ['a', 'b']
 [{id:'a'}, {id:'b'}].should.have.same.ids [{id:'a'}, {id:'b'}]
 [{id:'a'}, {id:'b'}].should.not.have.same.ids [{id:'b'}, {id:'a'}]
 ```
@@ -30,7 +32,13 @@ You can test for a subset of ids by chaining `include` or `contain`:
 [{id:'a'}, {id:'b'}].should.include.same.ids [{id:'a'}]
 ```
 
-Works well with [MongoDB ObjectIds](https://github.com/mongodb/node-mongodb-native).
+Works well with [MongoDB ObjectIds](https://github.com/mongodb/node-mongodb-native):
+```js
+doc.should.have.id(new ObjectId())
+doc.should.have.same.id(otherDoc)
+(new ObjectId()).should.id(doc)
+```
+
 #### Installation
 
 This is a plugin for the [Chai Assertion Library](http://chaijs.com). Install via [npm](http://npmjs.org).
